@@ -4,12 +4,17 @@ const fs = require('fs'); // Import the file system module
 const path = require('path'); // Import the path module for file paths
 
 const app = express();
-const port = 3000; // You can change this to any port you prefer
+const port = process.env.PORT || 3000; // Use Render's provided port or default to 3000
 const cors = require('cors');
 app.use(cors()); // Enable CORS for all routes
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
+
+// Health check endpoint for Render
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'OK', message: 'Server is healthy' });
+});
 
 // POST endpoint to receive text
 app.post('/api/send-text', (req, res) => {
@@ -36,6 +41,6 @@ app.post('/api/send-text', (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Backend server is running on http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Backend server is running on http://0.0.0.0:${port}`);
 });
