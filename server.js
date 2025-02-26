@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 // MongoDB connection
 const mongoUri = process.env.MONGO_URI || 'mongodb+srv://abhinav:<abcd123>@cluster0.cm8iv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoUri)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Failed to connect to MongoDB:', err));
 
