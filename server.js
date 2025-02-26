@@ -9,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
-const mongoUri = process.env.MONGO_URI || 'mongodb+srv://abhinav:<abcd123>@cluster0.cm8iv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const mongoUri = process.env.MONGO_URI || 'mongodb+srv://abhinav:<abcd123>@cluster0.cm8iv.mongodb.net/abhinav?retryWrites=true&w=majority&appName=Cluster0';
                                                         
 mongoose.connect(mongoUri)
     .then(() => console.log('Connected to MongoDB'))
